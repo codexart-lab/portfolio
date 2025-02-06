@@ -1,0 +1,43 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on pushes to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger deployment on pull requests targeting the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Specify the Node.js version
+
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Run tests (optional)
+    - name: Run tests
+      run: npm test  # If you have tests set up (optional)
+
+    # Build the app (optional, you can skip this if no build is required)
+    - name: Build the app
+      run: npm run build  # Optional: only if you have a build script
+
+    # Deploy to Render using GitHub Token for authentication
+    - name: Deploy to Render
+      run: |
+        curl -fsSL https://render.com/deploy/git/credentials?token=${{ secrets.RENDER_API_KEY }} | bash
+      env:
+        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
