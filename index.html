@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanjiro - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --neon-cyan: #0ff;
+            --dark-bg: #0a0a0a;
+            --card-bg: #111;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--dark-bg) 0%, #001a1a 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--neon-cyan);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--neon-cyan);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+        }
+
+        .project-card p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--neon-cyan);
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            margin: 0 1rem;
+            transition: text-shadow 0.3s;
+        }
+
+        .social-icons a:hover {
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">TJ</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container animate-fade-in">
+            <h1>Hi, I'm Tanjiro</h1>
+            <p>Full Stack Developer specializing in modern web applications.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/codexart-lab/Snaphost/refs/heads/main/image/Screenshot_2025-02-21-10-51-18-26_e4424258c8b8649f6e67d283a50a2cbc.jpg" class="project-image" alt="Project 1">
+                    <div class="project-content">
+                        <h3>SNAP HOST</h3>
+                        <p>This is a simple image uploader that allows users to upload images to IMGBB using drag-and-drop or file selection.</p>
+                        <a href="https://codexart-lab.github.io/Snaphost/" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://i.ibb.co/bgVQ2tr9/1000182237.jpg" class="project-image" alt="Project 2">
+                    <div class="project-content">
+                        <h3>Drive2Downloader</h3>
+                        <p>A modern web tool to convert Google Drive share links into direct download URLs. </p>
+                        <a href="https://drive2downloader.pages.dev/" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <!--4Project 3 -->
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/codexart-lab/Image-compress-/refs/heads/main/web/Screenshot_2025-01-15-01-08-05-52_3aea4af51f236e4932235fdada7d1643.jpg" class="project-image" alt="Project 3">
+                    <div class="project-content">
+                        <h3>Image Compresser</h3>
+                        <p>Compress Image Tool</p>
+                        <a href="https://112f39d6.image-compress-8cp.pages.dev/" class="project-link">View Project</a>
+                    </div>
+                </div>
+                  <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="https://raw.githubusercontent.com/codexart-lab/yt-thumbnail-downloader-/refs/heads/main/Youtube/Screenshot_2025-01-15-00-30-22-96_3aea4af51f236e4932235fdada7d1643.jpg" class="project-image" alt="Project 2">
+                    <div class="project-content">
+                        <h3>Yt Thumbnail Downloader</h3>
+                        <p>A modern web tool to Download YouTube Thumbnail . </p>
+                        <a href="https://yt-thumbnail-downloader.pages.dev/" class="project-link">View Project</a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="social-icons">
+                <a href="https://github.com/codexart-lab" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://t.me/pheonixion" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animation trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Navbar border on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.borderBottom = '1px solid var(--neon-cyan)';
+            } else {
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            }
+        });
+    </script>
+</body>
+  </html>
